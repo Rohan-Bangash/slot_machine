@@ -1,5 +1,3 @@
-
-
 // import prompt sync package to get user input
 const prompt = require("prompt-sync")();
 
@@ -23,7 +21,6 @@ const SYMBOLS_VALUES = {
 }
 
 const deposit = () => { 
-
     while(true)
     {
         const depositAmount = prompt("Enter a deposit amount: ")
@@ -42,7 +39,6 @@ const deposit = () => {
 
 // determine number of lines to bet on
 const getNumberOfLines = () => {
-
     while(true)
     {
         const lines = prompt("Enter the number of lines to bet on(1-3): ");
@@ -60,7 +56,6 @@ const getNumberOfLines = () => {
 
 // get total bet, bet amount must be less than balance
 const getBet = (balance, lines) => {
-    
     while(true)
     {
         const bet = prompt("Enter the bet per line: ");
@@ -74,7 +69,6 @@ const getBet = (balance, lines) => {
             return numberBet;
         }
         }
-
 }
 
 
@@ -86,15 +80,12 @@ const getBet = (balance, lines) => {
 
 const spin = () => {
     const symbols = [];
-
     // we need to loop through all the entries we have inside the SYMBOLS_COUNT object
     for(const[symbol,count] of Object.entries(SYMBOLS_COUNT)){
         for(let i=0;i<count;i++){
             symbols.push(symbol);
         }
     }
-    //console.log(symbols);
-
     // each nested array will represent a column, and we will generate the
     // symbols inside of these reels, using the symbols[] array
     const reels = [];
@@ -114,24 +105,8 @@ const spin = () => {
 // randomly select elements from the symbols[] array when inserting them in
 // the slot machines reels
 
-
-/*
-const transpose = (reels) => {
-    const transpose = [];
-    for(let i=0;i<COLS;i++)
-    {
-        transpose.push([]);
-        for(int j=0;j<ROWS;j++)
-        {
-
-        }
-    }
-} */
-
-
 let balance = deposit();
 const numberOfLines = getNumberOfLines();
 const bet = getBet(balance, numberOfLines);
 const reels = spin();
 console.log(reels);
-// transpose(reels);
